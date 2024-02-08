@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import models.User;
 
@@ -27,15 +28,16 @@ public class UserController {
 
     @GetMapping("/list")
     public String list(ModelMap model) {
+        model.addAttribute("title", "Lista de usuarios");
+        return "list";
+    }
 
-        User user = new User("Daniel", "Namur");
+    @ModelAttribute("users")
+    public List<User> userModel() {        
+        User user = new User("Daniel", "Perez");
         User user1 = new User("Daniel", "Namur");
         User user2 = new User("Daniel", "Namur");
 
-        List<User> users = Arrays.asList(user, user1, user2);
-
-        model.addAttribute("users", users);
-        model.addAttribute("title", "Lista de usuarios");
-        return "list";
+        return Arrays.asList(user, user1, user2);
     }
 }
