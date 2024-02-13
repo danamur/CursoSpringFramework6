@@ -28,4 +28,12 @@ public class ProductRepository {
         return data;
     }
 
+    public Product findById (Long id) {
+        // Utilizamos stream() para convertir la lista en un flujo de elementos.
+        // Luego usamos filter() para filtrar los elementos según el ID proporcionado.
+        // Usamos findFirst() para obtener el primer elemento que coincida con el filtro.
+        // Si se encuentra un elemento, se devuelve; de lo contrario, se devuelve null.
+        return data.stream().filter(p -> p.getId_product().equals(id)).findFirst().orElse(null);
+    }
+
 }
