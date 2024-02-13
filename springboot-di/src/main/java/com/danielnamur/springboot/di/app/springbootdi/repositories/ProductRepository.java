@@ -27,12 +27,15 @@ public class ProductRepository {
     public List<Product> findAll() {
         return data;
     }
-
+    /**
+     * Encuentra un producto por su ID.
+     * Busca en la lista de productos para encontrar el que tenga el ID proporcionado.
+     * Si se encuentra un producto con el ID dado, se devuelve.
+     * Si no se encuentra ningún producto con el ID dado, se devuelve null.
+     * @param id El ID del producto que se quiere encontrar.
+     * @return El producto encontrado, o null si no se encuentra ningún producto con el ID dado.
+     */
     public Product findById (Long id) {
-        // Utilizamos stream() para convertir la lista en un flujo de elementos.
-        // Luego usamos filter() para filtrar los elementos según el ID proporcionado.
-        // Usamos findFirst() para obtener el primer elemento que coincida con el filtro.
-        // Si se encuentra un elemento, se devuelve; de lo contrario, se devuelve null.
         return data.stream().filter(p -> p.getId_product().equals(id)).findFirst().orElse(null);
     }
 
