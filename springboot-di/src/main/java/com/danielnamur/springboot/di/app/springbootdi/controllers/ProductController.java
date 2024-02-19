@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.danielnamur.springboot.di.app.springbootdi.models.Product;
-import com.danielnamur.springboot.di.app.springbootdi.services.ProductServiceImpl;
+import com.danielnamur.springboot.di.app.springbootdi.services.ProductService;
 
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
 
     @Autowired
-    private ProductServiceImpl service;
+    private ProductService service;
 
     @GetMapping()
     public List<Product> list() {
