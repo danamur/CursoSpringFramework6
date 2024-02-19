@@ -3,6 +3,8 @@ package com.danielnamur.springboot.di.app.springbootdi.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.danielnamur.springboot.di.app.springbootdi.models.Product;
@@ -11,9 +13,26 @@ import com.danielnamur.springboot.di.app.springbootdi.repositories.ProductReposi
 @Service
 public class ProductServiceImpl implements ProductService {
 
+    /**
+     * Inyección de dependencia utilizando @Autowired y @Qualifier.
+     * El atributo 'repository' se inyecta utilizando la anotación @Autowired,
+     * que busca automáticamente un bean que implemente la interfaz ProductRepository.
+     * La anotación @Qualifier se utiliza para especificar el nombre del bean
+     * que se debe utilizar cuando hay más de una implementación de ProductRepository disponible.
+     * @Autowired
+     * @Qualifier("productFoo")
+    */
     private ProductRepository repository;
 
-    public ProductServiceImpl(ProductRepository repository) {
+    /**
+     * Constructor de ProductServiceImpl que recibe una implementación de ProductRepository.
+     * Utiliza la anotación @Qualifier para especificar el nombre del bean
+     * que se debe utilizar cuando hay más de una implementación de ProductRepository disponible.
+     * Esta implementación proporciona una forma explícita de inyección de dependencia
+     * utilizando el constructor de la clase.
+     * @param repository La implementación de ProductRepository que se utilizará.
+    */
+    public ProductServiceImpl(@Qualifier("productFoo") ProductRepository repository) {
         this.repository = repository;
     }
 
