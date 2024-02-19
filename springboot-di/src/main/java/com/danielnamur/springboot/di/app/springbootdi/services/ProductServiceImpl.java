@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
      * utilizando el constructor de la clase.
      * @param repository La implementación de ProductRepository que se utilizará.
     */
-    public ProductServiceImpl(@Qualifier("productFoo") ProductRepository repository) {
+    public ProductServiceImpl(@Qualifier("productList") ProductRepository repository) {
         this.repository = repository;
     }
 
@@ -50,9 +50,11 @@ public class ProductServiceImpl implements ProductService {
         return repository.findAll().stream().map(p ->{
             Double priceImp = p.getPrice() * 1.19;
             // Clona el producto actual y actualiza su precio con el precio con impuesto.
-            Product newProduct = (Product) p.clone();
-            newProduct.setPrice(priceImp.longValue());
-            return newProduct;
+            // Product newProduct = (Product) p.clone();
+            // newProduct.setPrice(priceImp.longValue());
+            // return newProduct;
+            p.setPrice(priceImp.longValue());
+            return p;
         }).collect(Collectors.toList());
     }
 
