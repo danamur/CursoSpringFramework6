@@ -3,8 +3,9 @@ package com.danielnamur.springboot.di.app.springbootdi.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import com.danielnamur.springboot.di.app.springbootdi.models.Product;
@@ -12,6 +13,9 @@ import com.danielnamur.springboot.di.app.springbootdi.repositories.ProductReposi
 
 @Service
 public class ProductServiceImpl implements ProductService {
+
+    @Autowired
+    private Environment environment;
 
     /**
      * Inyección de dependencia utilizando @Autowired y @Qualifier.
@@ -48,7 +52,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> findAll() {
         return repository.findAll().stream().map(p ->{
-            Double priceImp = p.getPrice() * 1.19;
+            Double priceImp = p.getPrice() * environment.getProperty("config.price.tax", Double.class);
             // Clona el producto actual y actualiza su precio con el precio con impuesto.
             Product newProduct = (Product) p.clone();
             newProduct.setPrice(priceImp.longValue());
