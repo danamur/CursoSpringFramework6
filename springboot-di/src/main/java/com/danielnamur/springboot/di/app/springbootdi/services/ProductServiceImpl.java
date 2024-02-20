@@ -50,11 +50,11 @@ public class ProductServiceImpl implements ProductService {
         return repository.findAll().stream().map(p ->{
             Double priceImp = p.getPrice() * 1.19;
             // Clona el producto actual y actualiza su precio con el precio con impuesto.
-            // Product newProduct = (Product) p.clone();
-            // newProduct.setPrice(priceImp.longValue());
-            // return newProduct;
-            p.setPrice(priceImp.longValue());
-            return p;
+            Product newProduct = (Product) p.clone();
+            newProduct.setPrice(priceImp.longValue());
+            return newProduct;
+            // p.setPrice(priceImp.longValue());
+            // return p;
         }).collect(Collectors.toList());
     }
 
