@@ -36,7 +36,7 @@ public class ProductServiceImpl implements ProductService {
      * utilizando el constructor de la clase.
      * @param repository La implementación de ProductRepository que se utilizará.
     */
-    public ProductServiceImpl(@Qualifier("productList") ProductRepository repository) {
+    public ProductServiceImpl(@Qualifier("productJson") ProductRepository repository) {
         this.repository = repository;
     }
 

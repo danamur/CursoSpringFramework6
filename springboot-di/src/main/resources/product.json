@@ -1,0 +1,52 @@
+[
+  {
+    "id_product": 1,
+    "name": "El Hobbit",
+    "price": 15000
+  },
+  {
+    "id_product": 2,
+    "name": "Elric de Melniboné",
+    "price": 12000
+  },
+  {
+    "id_product": 3,
+    "name": "Las Crónicas de Amber",
+    "price": 14000
+  },
+  {
+    "id_product": 4,
+    "name": "Neverwhere",
+    "price": 13500
+  },
+  {
+    "id_product": 5,
+    "name": "Stardust",
+    "price": 13000
+  },
+  {
+    "id_product": 6,
+    "name": "The Night Circus",
+    "price": 14500
+  },
+  {
+    "id_product": 7,
+    "name": "Coraline",
+    "price": 12500
+  },
+  {
+    "id_product": 8,
+    "name": "American Gods",
+    "price": 14000
+  },
+  {
+    "id_product": 9,
+    "name": "La Princesa Mononoke",
+    "price": 15500
+  },
+  {
+    "id_product": 10,
+    "name": "Jonathan Strange y el Sr. Norrell",
+    "price": 16000
+  }
+]

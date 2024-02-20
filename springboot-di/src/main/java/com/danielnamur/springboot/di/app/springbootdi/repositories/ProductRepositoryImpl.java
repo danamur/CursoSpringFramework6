@@ -3,7 +3,7 @@ package com.danielnamur.springboot.di.app.springbootdi.repositories;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.context.annotation.Primary;
+// import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 // import org.springframework.web.context.annotation.RequestScope;
 // import org.springframework.web.context.annotation.SessionScope;
@@ -12,7 +12,7 @@ import com.danielnamur.springboot.di.app.springbootdi.models.Product;
 
 // @RequestScope
 // @SessionScope
-@Primary
+// @Primary
 @Repository("productList")
 public class ProductRepositoryImpl implements ProductRepository {
 
