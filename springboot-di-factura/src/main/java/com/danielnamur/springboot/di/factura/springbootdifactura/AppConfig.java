@@ -3,6 +3,7 @@ package com.danielnamur.springboot.di.factura.springbootdifactura;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
@@ -10,9 +11,10 @@ import com.danielnamur.springboot.di.factura.springbootdifactura.models.Item;
 import com.danielnamur.springboot.di.factura.springbootdifactura.models.Product;
 
 @Configuration
-@PropertySource("classpath:data.properties")
+@PropertySource(value = "classpath:data.properties", encoding = "UTF-8")
 public class AppConfig {
 
+    @Bean
     List<Item> itemsInvoice() {
         Product product1 = new Product("Laptop Ultrabook Acer Swift 5", 1299999);
         Product product2 = new Product("Smartphone Samsung Galaxy S22 Ultra", 1599999);
