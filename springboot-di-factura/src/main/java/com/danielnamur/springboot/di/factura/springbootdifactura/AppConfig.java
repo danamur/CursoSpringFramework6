@@ -32,4 +32,23 @@ public class AppConfig {
         return items;
     }
 
+    @Bean("default")
+    List<Item> itemsInvoiceOffice() {
+        Product product1 = new Product("Escritorio de Oficina", 89999);
+        Product product2 = new Product("Silla Ergonómica", 149999);
+        Product product3 = new Product("Archivador de Metal", 49999);
+        Product product4 = new Product("Calculadora de Escritorio", 7999);
+        Product product5 = new Product("Papelera de Reciclaje", 2999);
+
+        List<Item> items = Arrays.asList(
+            new Item(product1, 2),
+            new Item(product2, 1),
+            new Item(product3, 3),
+            new Item(product4, 5),
+            new Item(product5, 10)
+        );
+
+        return items;
+    }
+
 }
