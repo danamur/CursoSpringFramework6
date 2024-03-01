@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.danielnamur.springboot.di.factura.springbootdifactura.models.Client;
 import com.danielnamur.springboot.di.factura.springbootdifactura.models.Invoice;
 
 @RestController
@@ -16,7 +17,17 @@ public class InvoiceController {
 
     @GetMapping("/show")
     public Invoice show() {
-        return invoice;
+        Invoice i = new Invoice();
+        Client c = new Client();
+
+        c.setLastname(invoice.getClient().getLastname());
+        c.setName(invoice.getClient().getName());
+
+        i.setClient(c);
+        i.setDescription(invoice.getDescription());
+        i.setItems(invoice.getItems());
+        
+        return i;
     }
 
 }
