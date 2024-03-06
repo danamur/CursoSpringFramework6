@@ -4,10 +4,12 @@ import java.util.Date;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
+import com.danielnamur.springboot.error.springbooterror.exceptions.UserNotFoundException;
 import com.danielnamur.springboot.error.springbooterror.models.Error;
 
 @RestControllerAdvice
@@ -56,6 +58,21 @@ public class HandlerExceptionController {
         Error error = new Error();
         error.setDate(new Date());
         error.setError("Numero invalido o incorrecto, no tiene formato de digito");
+        error.setMessage(exception.getMessage());
+        error.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR.value()).body(error);
+    }
+
+    @ExceptionHandler({
+        NullPointerException.class, 
+        HttpMessageNotWritableException.class, 
+        UserNotFoundException.class
+    })
+    public ResponseEntity<Error> nullPointer(Exception exception) {
+        Error error = new Error();
+        error.setDate(new Date());
+        error.setError("El usuario o el rol no existe");
         error.setMessage(exception.getMessage());
         error.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 
