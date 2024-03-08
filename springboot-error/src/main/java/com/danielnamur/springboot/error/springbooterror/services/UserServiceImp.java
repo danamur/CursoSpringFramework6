@@ -2,6 +2,7 @@ package com.danielnamur.springboot.error.springbooterror.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -22,13 +23,17 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public User findById(Long id) {
-        for (User user : users) {
-            if (user.getId().equals(id)) {
-                return user;
+    public Optional<User> findById(Long id) {
+        User user = null;
+
+        for (User u : users) {
+            if (u.getId().equals(id)) {
+                user = u;
+                break;
             }
         }
-        return null; // Devuelve null si no se encuentra ningún usuario con el ID proporcionado
+        
+        return Optional.ofNullable(user);
     }
 
     @Override
