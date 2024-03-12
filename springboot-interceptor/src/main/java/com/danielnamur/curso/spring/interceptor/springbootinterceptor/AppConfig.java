@@ -14,6 +14,7 @@ public class AppConfig implements WebMvcConfigurer {
     @Qualifier("loadingTimeInterceptor")
     private HandlerInterceptor timeInterceptor;
 
+    @SuppressWarnings("null")
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(timeInterceptor);
