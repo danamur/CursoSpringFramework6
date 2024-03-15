@@ -35,7 +35,7 @@ public class CalendarInterceptor implements HandlerInterceptor {
         System.out.println(hour);
 
         if (hour >= open && hour < close) {
-            StringBuilder message = new StringBuilder("Bienvenido al portal!");
+            StringBuilder message = new StringBuilder("Bienvenido al portal! ");
             message.append("Se encuentra abierto desde las ");
             message.append(open);
             message.append(" hrs.");
@@ -57,7 +57,7 @@ public class CalendarInterceptor implements HandlerInterceptor {
         message.append(" hrs.");
         
         data.put("message", message.toString());
-        data.put("date", new Date());
+        data.put("date", new Date().toString());
 
         response.setContentType("application/json");
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
